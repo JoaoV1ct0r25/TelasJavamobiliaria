@@ -7,46 +7,46 @@ import java.awt.event.*;
 public class TelaHome extends JFrame {
 
     public TelaHome() {
-        setTitle("Home - Sistema Imobiliário");
-        setSize(500, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Página Inicial - Sistema de Imóveis");
+        setSize(520, 420);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        getContentPane().setBackground(new Color(245, 245, 245));
+        getContentPane().setBackground(new Color(230, 230, 230));
 
-        JLabel titulo = new JLabel("Imobiliária Confiança");
-        titulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
-        titulo.setBounds(120, 30, 300, 30);
-        titulo.setForeground(new Color(40, 40, 40));
-        add(titulo);
+        JLabel lblTitulo = new JLabel("Imobiliária Esperança");
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 26));
+        lblTitulo.setBounds(110, 25, 350, 35);
+        lblTitulo.setForeground(new Color(30, 30, 30));
+        add(lblTitulo);
 
-        JLabel subtitulo = new JLabel("Bem-vindo ao sistema de gestão de clientes!");
-        subtitulo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        subtitulo.setBounds(90, 70, 400, 25);
-        subtitulo.setForeground(new Color(60, 60, 60));
-        add(subtitulo);
+        JLabel lblMensagem = new JLabel("Gerencie aqui seus clientes e cadastros!");
+        lblMensagem.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblMensagem.setBounds(100, 70, 350, 25);
+        lblMensagem.setForeground(new Color(50, 50, 50));
+        add(lblMensagem);
 
-        JButton btnCadastro = new JButton("Cadastrar Pessoa");
-        btnCadastro.setBounds(150, 130, 180, 40);
-        btnCadastro.setBackground(new Color(70, 130, 180));
-        btnCadastro.setForeground(Color.WHITE);
-        btnCadastro.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        add(btnCadastro);
+        JButton btnNovoCadastro = new JButton("Novo Cadastro");
+        btnNovoCadastro.setBounds(160, 130, 190, 45);
+        btnNovoCadastro.setBackground(new Color(65, 105, 225));
+        btnNovoCadastro.setForeground(Color.WHITE);
+        btnNovoCadastro.setFont(new Font("Arial", Font.BOLD, 14));
+        add(btnNovoCadastro);
 
-        JButton btnListagem = new JButton("Listar Pessoas");
-        btnListagem.setBounds(150, 190, 180, 40);
-        btnListagem.setBackground(new Color(34, 139, 34));
-        btnListagem.setForeground(Color.WHITE);
-        btnListagem.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        add(btnListagem);
+        JButton btnVerLista = new JButton("Ver Lista de Clientes");
+        btnVerLista.setBounds(160, 200, 190, 45);
+        btnVerLista.setBackground(new Color(46, 139, 87));
+        btnVerLista.setForeground(Color.WHITE);
+        btnVerLista.setFont(new Font("Arial", Font.BOLD, 14));
+        add(btnVerLista);
 
-        btnCadastro.addActionListener(new ActionListener() {
+        btnNovoCadastro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 new TelaCadastro();
             }
         });
 
-        btnListagem.addActionListener(new ActionListener() {
+        btnVerLista.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 new TelaListagem();
