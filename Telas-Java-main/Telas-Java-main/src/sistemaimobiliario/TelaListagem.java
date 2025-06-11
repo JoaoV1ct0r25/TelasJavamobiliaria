@@ -8,48 +8,47 @@ import java.awt.event.*;
 public class TelaListagem extends JFrame {
 
     public TelaListagem() {
-        setTitle("Listagem de Pessoas");
-        setSize(700, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Lista de Clientes");
+        setSize(720, 420);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        JLabel titulo = new JLabel("Pessoas Cadastradas", SwingConstants.CENTER);
-        titulo.setFont(new Font("Arial", Font.BOLD, 20));
-        titulo.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
-        add(titulo, BorderLayout.NORTH);
+        JLabel lblTopo = new JLabel("Clientes Registrados", SwingConstants.CENTER);
+        lblTopo.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        lblTopo.setBorder(BorderFactory.createEmptyBorder(12, 0, 12, 0));
+        add(lblTopo, BorderLayout.NORTH);
 
-        String[] colunas = {"Nome", "Dias para Aprovação", "Status"};
-        Object[][] dados = {
-            {"João Silva Oliveira", "3 dias", "Aprovado"},
-            {"Maria Souza de Silva", "7 dias", "Aguardando"},
-            {"Carlos Augusto Lima", "10 dias", "Recusado"},
-            {"Roberto Cunha Cardoso", "4 dias", "Recusado"},
-            {"Gustavo Coutinho Leite", "8 dias", "Aprovado"},
-            {"Mariana Roberta Socorro de Jesus", "5 dias", "Aguardando"},
-            {"Gabriela Ferreira", "6 dias", "Recusado"},
-            {"Carla Lima Mendes", "1 dia", "Aprovado"}
+        String[] headers = {"Nome Completo", "Prazo para Aprovação", "Situação"};
+        Object[][] registros = {
+            {"Ana Paula Lima", "2 dias", "Aguardando"},
+            {"Fernando Rocha", "5 dias", "Aprovado"},
+            {"Bruno Cesar Costa", "9 dias", "Recusado"},
+            {"Larissa Martins", "3 dias", "Aprovado"},
+            {"Tiago Henrique Silva", "6 dias", "Recusado"},
+            {"Juliana Moreira", "7 dias", "Aguardando"},
+            {"Patrícia Gomes", "4 dias", "Aprovado"},
+            {"Eduardo Nascimento", "8 dias", "Recusado"}
         };
 
-        JTable tabela = new JTable(new DefaultTableModel(dados, colunas));
-        JScrollPane scroll = new JScrollPane(tabela);
-        add(scroll, BorderLayout.CENTER);
+        JTable table = new JTable(new DefaultTableModel(registros, headers));
+        JScrollPane scrollPane = new JScrollPane(table);
+        add(scrollPane, BorderLayout.CENTER);
 
-        JPanel painelBotoes = new JPanel();
-        painelBotoes.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
-        JButton atualizar = new JButton("Atualizar");
-        atualizar.setBackground(new Color(100, 149, 237));
-        atualizar.setForeground(Color.WHITE);
-        painelBotoes.add(atualizar);
+        JButton btnRefresh = new JButton("Recarregar");
+        btnRefresh.setBackground(new Color(65, 105, 225));
+        btnRefresh.setForeground(Color.WHITE);
+        bottomPanel.add(btnRefresh);
 
-        JButton voltar = new JButton("Voltar");
-        voltar.setBackground(new Color(220, 20, 60));
-        voltar.setForeground(Color.WHITE);
-        painelBotoes.add(voltar);
+        JButton btnBack = new JButton("Retornar");
+        btnBack.setBackground(new Color(178, 34, 34));
+        btnBack.setForeground(Color.WHITE);
+        bottomPanel.add(btnBack);
 
-        add(painelBotoes, BorderLayout.SOUTH);
+        add(bottomPanel, BorderLayout.SOUTH);
 
-        voltar.addActionListener(new ActionListener() {
+        btnBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 new TelaHome();
@@ -61,6 +60,6 @@ public class TelaListagem extends JFrame {
     }
 
     public static void main(String[] args) {
-        new TelaListagem();
+        SwingUtilities.invokeLater(() -> new TelaListagem());
     }
 }
